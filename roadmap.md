@@ -1,0 +1,4 @@
+- [ ] Build map-first dashboard, shared filters, demo data and navigation
+- [ ] Add explorer, image upload, satellite and change analysis workflows
+- [ ] Add intervention, insights, data, settings and report screens
+- [ ] Add landing, login, guided demo and verify responsive interactions
