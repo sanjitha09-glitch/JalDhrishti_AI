@@ -18,6 +18,7 @@ import { Route as GeoImagesRouteImport } from './routes/geo-images'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as InterventionsRouteImport } from './routes/interventions'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as SatelliteRouteImport } from './routes/satellite'
 import { Route as SettingsRouteImport } from './routes/settings'
 
@@ -66,6 +67,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SatelliteRoute = SatelliteRouteImport.update({
   id: '/satellite',
   path: '/satellite',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/insights': typeof InsightsRoute
   '/interventions': typeof InterventionsRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
   '/satellite': typeof SatelliteRoute
   '/settings': typeof SettingsRoute
 }
@@ -100,6 +107,7 @@ export interface FileRoutesByTo {
   '/insights': typeof InsightsRoute
   '/interventions': typeof InterventionsRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
   '/satellite': typeof SatelliteRoute
   '/settings': typeof SettingsRoute
 }
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/insights': typeof InsightsRoute
   '/interventions': typeof InterventionsRoute
   '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
   '/satellite': typeof SatelliteRoute
   '/settings': typeof SettingsRoute
 }
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/interventions'
     | '/login'
+    | '/reports'
     | '/satellite'
     | '/settings'
   fileRoutesByTo: FileRoutesByTo
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/interventions'
     | '/login'
+    | '/reports'
     | '/satellite'
     | '/settings'
   id:
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/interventions'
     | '/login'
+    | '/reports'
     | '/satellite'
     | '/settings'
   fileRoutesById: FileRoutesById
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   InsightsRoute: typeof InsightsRoute
   InterventionsRoute: typeof InterventionsRoute
   LoginRoute: typeof LoginRoute
+  ReportsRoute: typeof ReportsRoute
   SatelliteRoute: typeof SatelliteRoute
   SettingsRoute: typeof SettingsRoute
 }
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/satellite': {
       id: '/satellite'
       path: '/satellite'
@@ -265,6 +285,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsRoute: InsightsRoute,
   InterventionsRoute: InterventionsRoute,
   LoginRoute: LoginRoute,
+  ReportsRoute: ReportsRoute,
   SatelliteRoute: SatelliteRoute,
   SettingsRoute: SettingsRoute,
 }
