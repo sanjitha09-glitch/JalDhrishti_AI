@@ -10,12 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChangeRouteImport } from './routes/change'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ExplorerRouteImport } from './routes/explorer'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as SatelliteRouteImport } from './routes/satellite'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangeRoute = ChangeRouteImport.update({
+  id: '/change',
+  path: '/change',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -23,40 +31,70 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExplorerRoute = ExplorerRouteImport.update({
+  id: '/explorer',
+  path: '/explorer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SatelliteRoute = SatelliteRouteImport.update({
+  id: '/satellite',
+  path: '/satellite',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
+  '/explorer': typeof ExplorerRoute
   '/login': typeof LoginRoute
+  '/satellite': typeof SatelliteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
+  '/explorer': typeof ExplorerRoute
   '/login': typeof LoginRoute
+  '/satellite': typeof SatelliteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
+  '/explorer': typeof ExplorerRoute
   '/login': typeof LoginRoute
+  '/satellite': typeof SatelliteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/login'
+  fullPaths:
+    '/' | '/change' | '/dashboard' | '/explorer' | '/login' | '/satellite'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login'
-  id: '__root__' | '/' | '/dashboard' | '/login'
+  to: '/' | '/change' | '/dashboard' | '/explorer' | '/login' | '/satellite'
+  id:
+    | '__root__'
+    | '/'
+    | '/change'
+    | '/dashboard'
+    | '/explorer'
+    | '/login'
+    | '/satellite'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChangeRoute: typeof ChangeRoute
   DashboardRoute: typeof DashboardRoute
+  ExplorerRoute: typeof ExplorerRoute
   LoginRoute: typeof LoginRoute
+  SatelliteRoute: typeof SatelliteRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,11 +106,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/change': {
+      id: '/change'
+      path: '/change'
+      fullPath: '/change'
+      preLoaderRoute: typeof ChangeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explorer': {
+      id: '/explorer'
+      path: '/explorer'
+      fullPath: '/explorer'
+      preLoaderRoute: typeof ExplorerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -82,13 +134,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/satellite': {
+      id: '/satellite'
+      path: '/satellite'
+      fullPath: '/satellite'
+      preLoaderRoute: typeof SatelliteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChangeRoute: ChangeRoute,
   DashboardRoute: DashboardRoute,
+  ExplorerRoute: ExplorerRoute,
   LoginRoute: LoginRoute,
+  SatelliteRoute: SatelliteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
