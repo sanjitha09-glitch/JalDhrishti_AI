@@ -12,10 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChangeRouteImport } from './routes/change'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DataLayersRouteImport } from './routes/data-layers'
 import { Route as ExplorerRouteImport } from './routes/explorer'
 import { Route as GeoImagesRouteImport } from './routes/geo-images'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as InterventionsRouteImport } from './routes/interventions'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as SatelliteRouteImport } from './routes/satellite'
+import { Route as SettingsRouteImport } from './routes/settings'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -32,6 +36,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DataLayersRoute = DataLayersRouteImport.update({
+  id: '/data-layers',
+  path: '/data-layers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExplorerRoute = ExplorerRouteImport.update({
   id: '/explorer',
   path: '/explorer',
@@ -40,6 +49,16 @@ const ExplorerRoute = ExplorerRouteImport.update({
 const GeoImagesRoute = GeoImagesRouteImport.update({
   id: '/geo-images',
   path: '/geo-images',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InterventionsRoute = InterventionsRouteImport.update({
+  id: '/interventions',
+  path: '/interventions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -52,34 +71,51 @@ const SatelliteRoute = SatelliteRouteImport.update({
   path: '/satellite',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
+  '/data-layers': typeof DataLayersRoute
   '/explorer': typeof ExplorerRoute
   '/geo-images': typeof GeoImagesRoute
+  '/insights': typeof InsightsRoute
+  '/interventions': typeof InterventionsRoute
   '/login': typeof LoginRoute
   '/satellite': typeof SatelliteRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
+  '/data-layers': typeof DataLayersRoute
   '/explorer': typeof ExplorerRoute
   '/geo-images': typeof GeoImagesRoute
+  '/insights': typeof InsightsRoute
+  '/interventions': typeof InterventionsRoute
   '/login': typeof LoginRoute
   '/satellite': typeof SatelliteRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
+  '/data-layers': typeof DataLayersRoute
   '/explorer': typeof ExplorerRoute
   '/geo-images': typeof GeoImagesRoute
+  '/insights': typeof InsightsRoute
+  '/interventions': typeof InterventionsRoute
   '/login': typeof LoginRoute
   '/satellite': typeof SatelliteRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -87,38 +123,54 @@ export interface FileRouteTypes {
     | '/'
     | '/change'
     | '/dashboard'
+    | '/data-layers'
     | '/explorer'
     | '/geo-images'
+    | '/insights'
+    | '/interventions'
     | '/login'
     | '/satellite'
+    | '/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/change'
     | '/dashboard'
+    | '/data-layers'
     | '/explorer'
     | '/geo-images'
+    | '/insights'
+    | '/interventions'
     | '/login'
     | '/satellite'
+    | '/settings'
   id:
     | '__root__'
     | '/'
     | '/change'
     | '/dashboard'
+    | '/data-layers'
     | '/explorer'
     | '/geo-images'
+    | '/insights'
+    | '/interventions'
     | '/login'
     | '/satellite'
+    | '/settings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChangeRoute: typeof ChangeRoute
   DashboardRoute: typeof DashboardRoute
+  DataLayersRoute: typeof DataLayersRoute
   ExplorerRoute: typeof ExplorerRoute
   GeoImagesRoute: typeof GeoImagesRoute
+  InsightsRoute: typeof InsightsRoute
+  InterventionsRoute: typeof InterventionsRoute
   LoginRoute: typeof LoginRoute
   SatelliteRoute: typeof SatelliteRoute
+  SettingsRoute: typeof SettingsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -144,6 +196,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/data-layers': {
+      id: '/data-layers'
+      path: '/data-layers'
+      fullPath: '/data-layers'
+      preLoaderRoute: typeof DataLayersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/explorer': {
       id: '/explorer'
       path: '/explorer'
@@ -156,6 +215,20 @@ declare module '@tanstack/react-router' {
       path: '/geo-images'
       fullPath: '/geo-images'
       preLoaderRoute: typeof GeoImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interventions': {
+      id: '/interventions'
+      path: '/interventions'
+      fullPath: '/interventions'
+      preLoaderRoute: typeof InterventionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -172,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SatelliteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -179,10 +259,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChangeRoute: ChangeRoute,
   DashboardRoute: DashboardRoute,
+  DataLayersRoute: DataLayersRoute,
   ExplorerRoute: ExplorerRoute,
   GeoImagesRoute: GeoImagesRoute,
+  InsightsRoute: InsightsRoute,
+  InterventionsRoute: InterventionsRoute,
   LoginRoute: LoginRoute,
   SatelliteRoute: SatelliteRoute,
+  SettingsRoute: SettingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
