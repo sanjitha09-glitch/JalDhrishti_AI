@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChangeRouteImport } from './routes/change'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DataLayersRouteImport } from './routes/data-layers'
+import { Route as ExplorerRouteImport } from './routes/explorer'
+import { Route as GeoImagesRouteImport } from './routes/geo-images'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as InterventionsRouteImport } from './routes/interventions'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SatelliteRouteImport } from './routes/satellite'
+import { Route as SettingsRouteImport } from './routes/settings'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChangeRoute = ChangeRouteImport.update({
+  id: '/change',
+  path: '/change',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataLayersRoute = DataLayersRouteImport.update({
+  id: '/data-layers',
+  path: '/data-layers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExplorerRoute = ExplorerRouteImport.update({
+  id: '/explorer',
+  path: '/explorer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GeoImagesRoute = GeoImagesRouteImport.update({
+  id: '/geo-images',
+  path: '/geo-images',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InterventionsRoute = InterventionsRouteImport.update({
+  id: '/interventions',
+  path: '/interventions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SatelliteRoute = SatelliteRouteImport.update({
+  id: '/satellite',
+  path: '/satellite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/change': typeof ChangeRoute
+  '/dashboard': typeof DashboardRoute
+  '/data-layers': typeof DataLayersRoute
+  '/explorer': typeof ExplorerRoute
+  '/geo-images': typeof GeoImagesRoute
+  '/insights': typeof InsightsRoute
+  '/interventions': typeof InterventionsRoute
+  '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/satellite': typeof SatelliteRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/change': typeof ChangeRoute
+  '/dashboard': typeof DashboardRoute
+  '/data-layers': typeof DataLayersRoute
+  '/explorer': typeof ExplorerRoute
+  '/geo-images': typeof GeoImagesRoute
+  '/insights': typeof InsightsRoute
+  '/interventions': typeof InterventionsRoute
+  '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/satellite': typeof SatelliteRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/change': typeof ChangeRoute
+  '/dashboard': typeof DashboardRoute
+  '/data-layers': typeof DataLayersRoute
+  '/explorer': typeof ExplorerRoute
+  '/geo-images': typeof GeoImagesRoute
+  '/insights': typeof InsightsRoute
+  '/interventions': typeof InterventionsRoute
+  '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/satellite': typeof SatelliteRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/change'
+    | '/dashboard'
+    | '/data-layers'
+    | '/explorer'
+    | '/geo-images'
+    | '/insights'
+    | '/interventions'
+    | '/login'
+    | '/reports'
+    | '/satellite'
+    | '/settings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/change'
+    | '/dashboard'
+    | '/data-layers'
+    | '/explorer'
+    | '/geo-images'
+    | '/insights'
+    | '/interventions'
+    | '/login'
+    | '/reports'
+    | '/satellite'
+    | '/settings'
+  id:
+    | '__root__'
+    | '/'
+    | '/change'
+    | '/dashboard'
+    | '/data-layers'
+    | '/explorer'
+    | '/geo-images'
+    | '/insights'
+    | '/interventions'
+    | '/login'
+    | '/reports'
+    | '/satellite'
+    | '/settings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChangeRoute: typeof ChangeRoute
+  DashboardRoute: typeof DashboardRoute
+  DataLayersRoute: typeof DataLayersRoute
+  ExplorerRoute: typeof ExplorerRoute
+  GeoImagesRoute: typeof GeoImagesRoute
+  InsightsRoute: typeof InsightsRoute
+  InterventionsRoute: typeof InterventionsRoute
+  LoginRoute: typeof LoginRoute
+  ReportsRoute: typeof ReportsRoute
+  SatelliteRoute: typeof SatelliteRoute
+  SettingsRoute: typeof SettingsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/change': {
+      id: '/change'
+      path: '/change'
+      fullPath: '/change'
+      preLoaderRoute: typeof ChangeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data-layers': {
+      id: '/data-layers'
+      path: '/data-layers'
+      fullPath: '/data-layers'
+      preLoaderRoute: typeof DataLayersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explorer': {
+      id: '/explorer'
+      path: '/explorer'
+      fullPath: '/explorer'
+      preLoaderRoute: typeof ExplorerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geo-images': {
+      id: '/geo-images'
+      path: '/geo-images'
+      fullPath: '/geo-images'
+      preLoaderRoute: typeof GeoImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interventions': {
+      id: '/interventions'
+      path: '/interventions'
+      fullPath: '/interventions'
+      preLoaderRoute: typeof InterventionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/satellite': {
+      id: '/satellite'
+      path: '/satellite'
+      fullPath: '/satellite'
+      preLoaderRoute: typeof SatelliteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChangeRoute: ChangeRoute,
+  DashboardRoute: DashboardRoute,
+  DataLayersRoute: DataLayersRoute,
+  ExplorerRoute: ExplorerRoute,
+  GeoImagesRoute: GeoImagesRoute,
+  InsightsRoute: InsightsRoute,
+  InterventionsRoute: InterventionsRoute,
+  LoginRoute: LoginRoute,
+  ReportsRoute: ReportsRoute,
+  SatelliteRoute: SatelliteRoute,
+  SettingsRoute: SettingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
