@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChangeRouteImport } from './routes/change'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ExplorerRouteImport } from './routes/explorer'
+import { Route as GeoImagesRouteImport } from './routes/geo-images'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as SatelliteRouteImport } from './routes/satellite'
 
@@ -36,6 +37,11 @@ const ExplorerRoute = ExplorerRouteImport.update({
   path: '/explorer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GeoImagesRoute = GeoImagesRouteImport.update({
+  id: '/geo-images',
+  path: '/geo-images',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
   '/explorer': typeof ExplorerRoute
+  '/geo-images': typeof GeoImagesRoute
   '/login': typeof LoginRoute
   '/satellite': typeof SatelliteRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
   '/explorer': typeof ExplorerRoute
+  '/geo-images': typeof GeoImagesRoute
   '/login': typeof LoginRoute
   '/satellite': typeof SatelliteRoute
 }
@@ -69,21 +77,36 @@ export interface FileRoutesById {
   '/change': typeof ChangeRoute
   '/dashboard': typeof DashboardRoute
   '/explorer': typeof ExplorerRoute
+  '/geo-images': typeof GeoImagesRoute
   '/login': typeof LoginRoute
   '/satellite': typeof SatelliteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/change' | '/dashboard' | '/explorer' | '/login' | '/satellite'
+    | '/'
+    | '/change'
+    | '/dashboard'
+    | '/explorer'
+    | '/geo-images'
+    | '/login'
+    | '/satellite'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/change' | '/dashboard' | '/explorer' | '/login' | '/satellite'
+  to:
+    | '/'
+    | '/change'
+    | '/dashboard'
+    | '/explorer'
+    | '/geo-images'
+    | '/login'
+    | '/satellite'
   id:
     | '__root__'
     | '/'
     | '/change'
     | '/dashboard'
     | '/explorer'
+    | '/geo-images'
     | '/login'
     | '/satellite'
   fileRoutesById: FileRoutesById
@@ -93,6 +116,7 @@ export interface RootRouteChildren {
   ChangeRoute: typeof ChangeRoute
   DashboardRoute: typeof DashboardRoute
   ExplorerRoute: typeof ExplorerRoute
+  GeoImagesRoute: typeof GeoImagesRoute
   LoginRoute: typeof LoginRoute
   SatelliteRoute: typeof SatelliteRoute
 }
@@ -127,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExplorerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/geo-images': {
+      id: '/geo-images'
+      path: '/geo-images'
+      fullPath: '/geo-images'
+      preLoaderRoute: typeof GeoImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -149,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChangeRoute: ChangeRoute,
   DashboardRoute: DashboardRoute,
   ExplorerRoute: ExplorerRoute,
+  GeoImagesRoute: GeoImagesRoute,
   LoginRoute: LoginRoute,
   SatelliteRoute: SatelliteRoute,
 }
